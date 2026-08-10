@@ -1,0 +1,26 @@
+[
+  {
+    "name": "GitHub",
+    "url": "https://github.com/vemines",
+    "type": "link",
+    "icon": "github"
+  },
+  {
+    "name": "Zalo",
+    "url": "https://zalo.me/0946360458",
+    "type": "link",
+    "icon": "zalo"
+  },
+  {
+    "name": "Email",
+    "type": "email",
+    "value": "hphat99.dev@gmail.com",
+    "icon": "email"
+  },
+  {
+    "name": "Telegram",
+    "url": "https://t.me/vemines",
+    "type": "link",
+    "icon": "telegram"
+  }
+]
