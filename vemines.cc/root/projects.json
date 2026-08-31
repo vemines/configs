@@ -1,12 +1,17 @@
 [
   {
     "title": "Money Exchange",
-    "description": "Currency exchange & rate trends website",
+    "description": "Chuyển đổi tiền tệ và theo dõi biến động tỷ giá theo thời gian thực.",
     "link": "https://me.vemines.cc"
   },
   {
     "title": "Shorten URL",
-    "description": "Quickly and securely shorten your links with password protection and QR code generation.",
+    "description": "Rút gọn liên kết kèm tính năng đặt mật khẩu, cài đặt thời hạn (TTL) và tạo mã QR.",
     "link": "https://s.vemines.cc"
+  },
+  {
+    "title": "OCR",
+    "description": "Trích xuất văn bản từ ảnh chụp màn hình. Hỗ trợ hoạt động ngoại tuyến và tích hợp API.",
+    "link": "https://github.com/vemines/ocr/releases"
   }
 ]
