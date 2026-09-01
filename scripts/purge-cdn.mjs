@@ -4,41 +4,77 @@ import { execSync } from 'node:child_process';
 
 const REPO = 'vemines/configs';
 const BRANCH = 'main';
-const TARGET_DIRS = ['images', 'vemines.cc'];
-const DEFAULT_DELAY_MS = 1000; // 1 second delay per file to prevent CDN throttling
+const DEFAULT_DELAY_MS = 1000; // 1s per file to prevent CDN throttling
+const EXCLUDED_DIRS = new Set(['.git', '.github', 'scripts', 'node_modules']);
+const EXCLUDED_EXTENSIONS = new Set(['.md', '.gitignore', '.gitattributes']);
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
- * Gets modified / created files from Git status and last commit
+ * Checks if a file path is eligible for CDN purge (not in internal/excluded folders)
+ */
+function isEligibleFile(filePath) {
+  const normalized = filePath.replace(/\\/g, '/').replace(/^\/+/, '');
+  const parts = normalized.split('/');
+
+  // Exclude top-level internal directories
+  if (parts.length > 0 && EXCLUDED_DIRS.has(parts[0])) {
+    return false;
+  }
+
+  // Exclude hidden files or non-content files
+  const ext = path.extname(normalized).toLowerCase();
+  if (EXCLUDED_EXTENSIONS.has(ext)) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Gets modified / created files from Git status and diffs
  */
 function getGitChangedFiles() {
   const changed = new Set();
 
-  // 1. Uncommitted changes (working tree & staged)
+  // 1. Check uncommitted changes (working tree & staged)
   try {
     const statusOut = execSync('git status --porcelain', { encoding: 'utf-8' });
     for (const line of statusOut.split('\n')) {
       const trimmed = line.trim();
       if (!trimmed) continue;
-      const rawPath = trimmed.substring(3).trim().replace(/^"|"$/g, '');
-      if (rawPath) changed.add(rawPath.replace(/\\/g, '/'));
+      // Skip deleted files (status starts with ' D' or 'D ')
+      const statusCode = line.substring(0, 2);
+      if (statusCode.includes('D')) continue;
+
+      const rawPath = trimmed.substring(2).trim().replace(/^"|"$/g, '');
+      if (rawPath) {
+        changed.add(rawPath.replace(/\\/g, '/'));
+      }
     }
   } catch {
     // Ignore git status error
   }
 
-  // 2. Changes in the latest commit (HEAD~1 -> HEAD)
+  // 2. Check changes in commit(s)
+  // If in GitHub Actions push event, use base commit comparison if available
+  const baseSha = process.env.BASE_SHA || process.env.GITHUB_BASE_REF;
+  let diffCmd = 'git diff --name-only --diff-filter=d HEAD~1 HEAD';
+
+  if (baseSha && baseSha !== '0000000000000000000000000000000000000000') {
+    diffCmd = `git diff --name-only --diff-filter=d ${baseSha} HEAD`;
+  }
+
   try {
-    const diffOut = execSync('git diff --name-only HEAD~1 HEAD', { encoding: 'utf-8' });
+    const diffOut = execSync(diffCmd, { encoding: 'utf-8' });
     for (const line of diffOut.split('\n')) {
       const trimmed = line.trim();
       if (trimmed) changed.add(trimmed.replace(/\\/g, '/'));
     }
   } catch {
-    // If only 1 commit exists or git diff fails, try HEAD
+    // Fallback: compare against HEAD
     try {
-      const diffHead = execSync('git diff --name-only HEAD', { encoding: 'utf-8' });
+      const diffHead = execSync('git diff --name-only --diff-filter=d HEAD', { encoding: 'utf-8' });
       for (const line of diffHead.split('\n')) {
         const trimmed = line.trim();
         if (trimmed) changed.add(trimmed.replace(/\\/g, '/'));
@@ -52,35 +88,34 @@ function getGitChangedFiles() {
 }
 
 /**
- * Recursively gets all files in a directory
+ * Recursively scans whole repository for all eligible files
  */
-async function getAllFilesInDirs(dirs) {
+async function getAllProjectFiles(rootDir = '.') {
   const files = [];
 
-  async function scan(dir) {
+  async function scan(currentDir) {
     try {
-      const entries = await fs.readdir(dir, { withFileTypes: true });
+      const entries = await fs.readdir(currentDir, { withFileTypes: true });
       for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name);
+        const fullPath = path.join(currentDir, entry.name);
+        const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
+
         if (entry.isDirectory()) {
-          if (!entry.name.startsWith('.')) {
+          if (!EXCLUDED_DIRS.has(entry.name) && !entry.name.startsWith('.')) {
             await scan(fullPath);
           }
         } else if (entry.isFile()) {
-          if (!entry.name.startsWith('.')) {
-            files.push(path.relative(process.cwd(), fullPath).replace(/\\/g, '/'));
+          if (isEligibleFile(relPath)) {
+            files.push(relPath);
           }
         }
       }
     } catch {
-      // Directory doesn't exist
+      // Directory access error
     }
   }
 
-  for (const dir of dirs) {
-    await scan(dir);
-  }
-
+  await scan(rootDir);
   return files;
 }
 
@@ -151,23 +186,33 @@ async function main() {
 
   if (directFiles.length > 0) {
     // 1. User specified specific file paths
-    targets = directFiles.map((f) => f.replace(/\\/g, '/'));
+    targets = directFiles.map((f) => f.replace(/\\/g, '/')).filter(isEligibleFile);
     console.log(`🎯 Purging ${targets.length} specified file(s)...`);
   } else if (isAll) {
-    // 2. User requested full scan with --all
-    console.log(`🔍 Scanning all files in [${TARGET_DIRS.join(', ')}]...`);
-    targets = await getAllFilesInDirs(TARGET_DIRS);
+    // 2. Full scan across entire project
+    console.log(`🔍 Scanning all public project files across repository...`);
+    targets = await getAllProjectFiles('.');
   } else {
     // 3. Smart Git-diff mode (Default)
-    console.log(`⚡ Git Change Detection Mode: Finding modified files in [${TARGET_DIRS.join(', ')}]...`);
+    console.log(`⚡ Git Change Detection Mode: Finding modified files in repository...`);
     const changed = getGitChangedFiles();
     
-    // Filter only files belonging to target directories
-    targets = changed.filter((f) => TARGET_DIRS.some((dir) => f.startsWith(`${dir}/`) || f === dir));
+    // Filter only eligible project files that currently exist on disk
+    targets = [];
+    for (const file of changed) {
+      if (isEligibleFile(file)) {
+        try {
+          await fs.access(file);
+          targets.push(file);
+        } catch {
+          // File was deleted, skip purging
+        }
+      }
+    }
 
     if (targets.length === 0) {
-      console.log('✨ No recent Git changes detected in images/ or vemines.cc/.');
-      console.log('💡 Tip: Use `node scripts/purge-cdn.mjs --all` to force purge all files.');
+      console.log('✨ No recent Git changes detected in project files.');
+      console.log('💡 Tip: Use `node scripts/purge-cdn.mjs --all` to force purge all repository files.');
       return;
     }
   }

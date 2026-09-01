@@ -1,0 +1,43 @@
+name: Purge jsDelivr CDN Cache
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      purge_all:
+        description: 'Purge all files in repository (true/false)'
+        required: false
+        default: 'false'
+
+concurrency:
+  group: purge-cdn-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  purge:
+    name: Purge jsDelivr Cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Fetch previous commit for accurate git diff
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run CDN Purge
+        env:
+          BASE_SHA: ${{ github.event.before }}
+        run: |
+          if [ "${{ github.event.inputs.purge_all }}" = "true" ]; then
+            echo "🚀 Purging ALL repository files..."
+            node scripts/purge-cdn.mjs --all
+          else
+            echo "⚡ Purging changed files from push..."
+            node scripts/purge-cdn.mjs
+          fi
