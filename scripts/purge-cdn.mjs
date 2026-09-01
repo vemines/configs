@@ -5,36 +5,112 @@ import { execSync } from 'node:child_process';
 const REPO = 'vemines/configs';
 const BRANCH = 'main';
 const DEFAULT_DELAY_MS = 1000; // 1s per file to prevent CDN throttling
-const EXCLUDED_DIRS = new Set(['.git', '.github', 'scripts', 'node_modules']);
-const EXCLUDED_EXTENSIONS = new Set(['.md', '.gitignore', '.gitattributes']);
+
+// Top-level internal directories to exclude from CDN purging
+const EXCLUDED_DIRS = new Set([
+  '.git',
+  '.github',
+  '.cache',
+  'scripts',
+  'node_modules',
+  '.vscode',
+  '.idea',
+  '.husky',
+]);
+
+// Comprehensive whitelist of allowed public web & configuration file extensions
+const ALLOWED_EXTENSIONS = new Set([
+  // Data & Config
+  '.json', '.json5', '.txt', '.csv', '.tsv', '.xml', '.yaml', '.yml', '.toml', '.ini',
+  // Images
+  '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.avif', '.bmp', '.tiff',
+  // Media & Video
+  '.mp4', '.webm', '.mp3', '.wav', '.ogg',
+  // Documents & Office
+  '.pdf', '.docx', '.xlsx', '.pptx', '.doc', '.xls', '.ppt',
+  // Web Fonts
+  '.woff', '.woff2', '.ttf', '.otf', '.eot',
+]);
+
+const EMPTY_TREE_SHA = '4b825dc642cb6eb9a060e54bf8d69288fbee4904'; // Git's well-known empty tree hash
+const DEFAULT_CACHE_FILE = '.cache/last_purged_sha';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
- * Checks if a file path is eligible for CDN purge (not in internal/excluded folders)
+ * Checks if a commit SHA actually exists in the local Git repository
+ */
+function isValidGitCommit(sha) {
+  if (!sha || typeof sha !== 'string' || /^0+$/.test(sha.trim())) return false;
+  try {
+    execSync(`git cat-file -e ${sha.trim()}^{commit}`, { stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Reads cached last purged SHA from file if present
+ */
+async function getCachedPurgedSha(cachePath = DEFAULT_CACHE_FILE) {
+  try {
+    const content = await fs.readFile(cachePath, 'utf-8');
+    const sha = content.trim();
+    if (isValidGitCommit(sha)) {
+      return sha;
+    }
+  } catch {
+    // Cache file does not exist yet
+  }
+  return null;
+}
+
+/**
+ * Saves current HEAD commit SHA to cache file
+ */
+async function savePurgedSha(cachePath = DEFAULT_CACHE_FILE) {
+  try {
+    const headSha = execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
+    await fs.mkdir(path.dirname(cachePath), { recursive: true });
+    await fs.writeFile(cachePath, headSha, 'utf-8');
+    console.log(`💾 Saved state: last purged SHA → ${headSha.slice(0, 7)}`);
+  } catch (err) {
+    console.warn(`⚠️ Could not save purge cache file: ${err.message}`);
+  }
+}
+
+/**
+ * Checks if a file path is eligible for CDN purge using comprehensive whitelist
  */
 function isEligibleFile(filePath) {
   const normalized = filePath.replace(/\\/g, '/').replace(/^\/+/, '');
   const parts = normalized.split('/');
 
-  // Exclude top-level internal directories
-  if (parts.length > 0 && EXCLUDED_DIRS.has(parts[0])) {
+  // 1. Exclude top-level internal directories
+  if (parts.length > 1 && EXCLUDED_DIRS.has(parts[0])) {
+    return false;
+  }
+  if (parts.length === 1 && EXCLUDED_DIRS.has(parts[0])) {
     return false;
   }
 
-  // Exclude hidden files or non-content files
+  const basename = path.basename(normalized);
+
+  // 2. Exclude macOS AppleDouble resource-fork junk (._filename)
+  if (basename.startsWith('._')) {
+    return false;
+  }
+
+  // 3. Match against allowed extensions whitelist
   const ext = path.extname(normalized).toLowerCase();
-  if (EXCLUDED_EXTENSIONS.has(ext)) {
-    return false;
-  }
-
-  return true;
+  return ALLOWED_EXTENSIONS.has(ext);
 }
 
 /**
- * Gets modified / created files from Git status and diffs
+ * Gets modified / created files from Git status and diffs with comprehensive edge-case handling
  */
-function getGitChangedFiles() {
+async function getGitChangedFiles() {
   const changed = new Set();
 
   // 1. Check uncommitted changes (working tree & staged)
@@ -56,13 +132,30 @@ function getGitChangedFiles() {
     // Ignore git status error
   }
 
-  // 2. Check changes in commit(s)
-  // If in GitHub Actions push event, use base commit comparison if available
-  const baseSha = process.env.BASE_SHA || process.env.GITHUB_BASE_REF;
-  let diffCmd = 'git diff --name-only --diff-filter=d HEAD~1 HEAD';
+  // 2. Determine base commit to diff against
+  const cacheFile = process.env.CACHE_FILE || DEFAULT_CACHE_FILE;
+  const cachedSha = await getCachedPurgedSha(cacheFile);
+  const envBaseSha = process.env.BASE_SHA;
+  let diffCmd = '';
 
-  if (baseSha && baseSha !== '0000000000000000000000000000000000000000') {
-    diffCmd = `git diff --name-only --diff-filter=d ${baseSha} HEAD`;
+  if (cachedSha && isValidGitCommit(cachedSha)) {
+    // Priority 1: Use cached SHA from previous successful purge run (bulletproof against force-pushes)
+    console.log(`📌 Using cached last purged commit: ${cachedSha.slice(0, 7)}`);
+    diffCmd = `git diff --name-only --diff-filter=d ${cachedSha} HEAD`;
+  } else if (isValidGitCommit(envBaseSha)) {
+    // Priority 2: Use push range base commit provided by GitHub Actions (github.event.before)
+    console.log(`📌 Using push base commit: ${envBaseSha.slice(0, 7)}`);
+    diffCmd = `git diff --name-only --diff-filter=d ${envBaseSha} HEAD`;
+  } else if (isValidGitCommit('HEAD~1')) {
+    // Priority 3: Fallback to previous commit
+    if (envBaseSha) {
+      console.warn(`⚠️ BASE_SHA "${envBaseSha.slice(0, 7)}" not found in Git history (force-push?). Falling back to HEAD~1.`);
+    }
+    diffCmd = 'git diff --name-only --diff-filter=d HEAD~1 HEAD';
+  } else {
+    // Priority 4: First commit in repository / initial push (diff against empty tree)
+    console.log('📌 Initial repository push detected. Diffing against empty tree.');
+    diffCmd = `git diff --name-only --diff-filter=d ${EMPTY_TREE_SHA} HEAD`;
   }
 
   try {
@@ -72,10 +165,10 @@ function getGitChangedFiles() {
       if (trimmed) changed.add(trimmed.replace(/\\/g, '/'));
     }
   } catch {
-    // Fallback: compare against HEAD
+    // Ultimate Fallback: diff against empty tree
     try {
-      const diffHead = execSync('git diff --name-only --diff-filter=d HEAD', { encoding: 'utf-8' });
-      for (const line of diffHead.split('\n')) {
+      const diffFallback = execSync(`git diff --name-only --diff-filter=d ${EMPTY_TREE_SHA} HEAD`, { encoding: 'utf-8' });
+      for (const line of diffFallback.split('\n')) {
         const trimmed = line.trim();
         if (trimmed) changed.add(trimmed.replace(/\\/g, '/'));
       }
@@ -99,9 +192,11 @@ async function getAllProjectFiles(rootDir = '.') {
       for (const entry of entries) {
         const fullPath = path.join(currentDir, entry.name);
         const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
+        const isTopLevel = !relPath.includes('/');
 
         if (entry.isDirectory()) {
-          if (!EXCLUDED_DIRS.has(entry.name) && !entry.name.startsWith('.')) {
+          // Only exclude top-level internal directories
+          if (!(isTopLevel && EXCLUDED_DIRS.has(entry.name))) {
             await scan(fullPath);
           }
         } else if (entry.isFile()) {
@@ -195,7 +290,7 @@ async function main() {
   } else {
     // 3. Smart Git-diff mode (Default)
     console.log(`⚡ Git Change Detection Mode: Finding modified files in repository...`);
-    const changed = getGitChangedFiles();
+    const changed = await getGitChangedFiles();
     
     // Filter only eligible project files that currently exist on disk
     targets = [];
@@ -213,6 +308,8 @@ async function main() {
     if (targets.length === 0) {
       console.log('✨ No recent Git changes detected in project files.');
       console.log('💡 Tip: Use `node scripts/purge-cdn.mjs --all` to force purge all repository files.');
+      const cacheFile = process.env.CACHE_FILE || DEFAULT_CACHE_FILE;
+      await savePurgedSha(cacheFile);
       return;
     }
   }
@@ -251,6 +348,12 @@ async function main() {
     console.log('💡 Note: jsDelivr enforces a cooldown (~1h) per file. CDN still updates after TTL.');
   }
   console.log('='.repeat(60));
+
+  // Save successful purge state to cache file
+  if (stats.ERROR === 0 && !directFiles.length) {
+    const cacheFile = process.env.CACHE_FILE || DEFAULT_CACHE_FILE;
+    await savePurgedSha(cacheFile);
+  }
 }
 
 main().catch((err) => {

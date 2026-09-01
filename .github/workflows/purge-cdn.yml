@@ -11,6 +11,10 @@ on:
         required: false
         default: 'false'
 
+permissions:
+  contents: read
+  actions: write
+
 concurrency:
   group: purge-cdn-${{ github.ref }}
   cancel-in-progress: false
@@ -23,21 +27,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # Fetch previous commit for accurate git diff
+          fetch-depth: 0 # Full commit history for accurate Git diffs across multi-commit pushes
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      - name: Restore last purged commit state
+        continue-on-error: true
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/last_purged_sha
+          key: cdn-purge-state-${{ github.sha }}
+          restore-keys: |
+            cdn-purge-state-
+
       - name: Run CDN Purge
         env:
           BASE_SHA: ${{ github.event.before }}
+          CACHE_FILE: .cache/last_purged_sha
         run: |
           if [ "${{ github.event.inputs.purge_all }}" = "true" ]; then
             echo "🚀 Purging ALL repository files..."
             node scripts/purge-cdn.mjs --all
           else
-            echo "⚡ Purging changed files from push..."
+            echo "⚡ Purging changed files..."
             node scripts/purge-cdn.mjs
           fi
+
+      - name: Save last purged commit state
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/last_purged_sha
+          key: cdn-purge-state-${{ github.sha }}
