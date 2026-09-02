@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.0.0",
-  "lastUpdated": "2026-09-01T00:00:00Z",
+  "schemaVersion": "1.0.1",
+  "lastUpdated": "2026-09-02T12:00:00Z",
   "engines": {
     "mongodb": [
       {
@@ -8,53 +8,53 @@
         "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.4.zip",
         "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
         "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "bin/mongosh.exe"
+        "cliSubpath": "mongosh.exe"
       },
       {
         "version": "7.0.14",
         "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.14.zip",
         "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
         "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "bin/mongosh.exe"
+        "cliSubpath": "mongosh.exe"
       },
       {
         "version": "6.0.19",
         "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.19.zip",
         "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
         "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "bin/mongosh.exe"
+        "cliSubpath": "mongosh.exe"
       },
       {
         "version": "5.0.28",
         "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-5.0.28.zip",
         "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
         "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "bin/mongosh.exe"
+        "cliSubpath": "mongosh.exe"
       },
       {
         "version": "4.4.29 (Legacy)",
         "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-4.4.29.zip",
         "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
         "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "bin/mongosh.exe"
+        "cliSubpath": "mongosh.exe"
       }
     ],
     "redis": [
       {
         "version": "8.10.1",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/8.10.1/Redis-8.10.1-Windows-x64.zip",
+        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/8.10.1/Redis-8.10.1-Windows-x64-msys2.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
       {
         "version": "7.4.11",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/7.4.11/Redis-7.4.11-Windows-x64.zip",
+        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/7.4.11/Redis-7.4.11-Windows-x64-msys2.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
       {
         "version": "6.2.24",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/6.2.24/Redis-6.2.24-Windows-x64.zip",
+        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/6.2.24/Redis-6.2.24-Windows-x64-msys2.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
@@ -68,37 +68,37 @@
     "postgresql": [
       {
         "version": "18.6",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259275",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260488",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "17.11",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259274",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260491",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "16.15",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259273",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260494",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "15.19",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259272",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260497",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "14.24",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259271",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260452",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
-        "version": "13.23",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259270",
+        "version": "13.23 (Legacy)",
+        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259854",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       }
@@ -106,19 +106,19 @@
     "mysql": [
       {
         "version": "8.4.3 (LTS)",
-        "downloadUrl": "https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.3-winx64.zip",
+        "downloadUrl": "https://cdn.mysql.com/archives/mysql-8.4/mysql-8.4.3-winx64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
       },
       {
         "version": "8.0.39",
-        "downloadUrl": "https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.39-winx64.zip",
+        "downloadUrl": "https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.39-winx64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
       },
       {
         "version": "5.7.44 (Legacy)",
-        "downloadUrl": "https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.44-winx64.zip",
+        "downloadUrl": "https://cdn.mysql.com/archives/mysql-5.7/mysql-5.7.44-winx64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
       }
@@ -137,7 +137,7 @@
         "cliSubpath": "bin/sqlite3.exe"
       },
       {
-        "version": "3.44.2",
+        "version": "3.44.2 (Legacy)",
         "downloadUrl": "https://www.sqlite.org/2023/sqlite-tools-win-x64-3440200.zip",
         "serverSubpath": "bin/sqlite3.exe",
         "cliSubpath": "bin/sqlite3.exe"
