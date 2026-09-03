@@ -1,40 +1,33 @@
 {
   "schemaVersion": "1.0.1",
-  "lastUpdated": "2026-09-02T12:00:00Z",
+  "lastUpdated": "2026-09-03T12:00:00Z",
   "engines": {
     "mongodb": [
       {
         "version": "8.0.4",
-        "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.4.zip",
-        "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongodb-8.0.4.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongosh-windows-x64.zip",
         "serverSubpath": "bin/mongod.exe",
         "cliSubpath": "mongosh.exe"
       },
       {
         "version": "7.0.14",
-        "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-7.0.14.zip",
-        "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongodb-7.0.14.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongosh-windows-x64.zip",
         "serverSubpath": "bin/mongod.exe",
         "cliSubpath": "mongosh.exe"
       },
       {
         "version": "6.0.19",
-        "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.19.zip",
-        "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongodb-6.0.19.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongosh-windows-x64.zip",
         "serverSubpath": "bin/mongod.exe",
         "cliSubpath": "mongosh.exe"
       },
       {
         "version": "5.0.28",
-        "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-5.0.28.zip",
-        "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
-        "serverSubpath": "bin/mongod.exe",
-        "cliSubpath": "mongosh.exe"
-      },
-      {
-        "version": "4.4.29 (Legacy)",
-        "serverUrl": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-4.4.29.zip",
-        "cliUrl": "https://downloads.mongodb.com/compass/mongosh-2.3.8-win32-x64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongodb-5.0.28.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mongosh-windows-x64.zip",
         "serverSubpath": "bin/mongod.exe",
         "cliSubpath": "mongosh.exe"
       }
@@ -42,63 +35,59 @@
     "redis": [
       {
         "version": "8.10.1",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/8.10.1/Redis-8.10.1-Windows-x64-msys2.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-8.10.1.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-cli-windows-x64.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
       {
         "version": "7.4.11",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/7.4.11/Redis-7.4.11-Windows-x64-msys2.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-7.4.11.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-cli-windows-x64.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
       {
         "version": "6.2.24",
-        "downloadUrl": "https://github.com/redis-windows/redis-windows/releases/download/6.2.24/Redis-6.2.24-Windows-x64-msys2.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-6.2.24.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-cli-windows-x64.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       },
       {
         "version": "5.0.14.1 (Legacy)",
-        "downloadUrl": "https://github.com/tporadowski/redis/releases/download/v5.0.14.1/Redis-x64-5.0.14.1.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-5.0.14.1.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/redis-cli-windows-x64.zip",
         "serverSubpath": "bin/redis-server.exe",
         "cliSubpath": "bin/redis-cli.exe"
       }
     ],
     "postgresql": [
       {
-        "version": "18.6",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260488",
-        "serverSubpath": "bin/postgres.exe",
-        "cliSubpath": "bin/psql.exe"
-      },
-      {
         "version": "17.11",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260491",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/postgresql-17.11.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/psql-cli-windows-x64.zip",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "16.15",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260494",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/postgresql-16.15.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/psql-cli-windows-x64.zip",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "15.19",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260497",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/postgresql-15.19.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/psql-cli-windows-x64.zip",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       },
       {
         "version": "14.24",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260452",
-        "serverSubpath": "bin/postgres.exe",
-        "cliSubpath": "bin/psql.exe"
-      },
-      {
-        "version": "13.23 (Legacy)",
-        "downloadUrl": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1259854",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/postgresql-14.24.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/psql-cli-windows-x64.zip",
         "serverSubpath": "bin/postgres.exe",
         "cliSubpath": "bin/psql.exe"
       }
@@ -106,41 +95,141 @@
     "mysql": [
       {
         "version": "8.4.3 (LTS)",
-        "downloadUrl": "https://cdn.mysql.com/archives/mysql-8.4/mysql-8.4.3-winx64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-8.4.3.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-cli-windows-x64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
       },
       {
         "version": "8.0.39",
-        "downloadUrl": "https://cdn.mysql.com/archives/mysql-8.0/mysql-8.0.39-winx64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-8.0.39.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-cli-windows-x64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
       },
       {
         "version": "5.7.44 (Legacy)",
-        "downloadUrl": "https://cdn.mysql.com/archives/mysql-5.7/mysql-5.7.44-winx64.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-5.7.44.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-cli-windows-x64.zip",
         "serverSubpath": "bin/mysqld.exe",
         "cliSubpath": "bin/mysql.exe"
+      }
+    ],
+    "mariadb": [
+      {
+        "version": "11.4.5 (LTS)",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mariadb-11.4.5.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-cli-windows-x64.zip",
+        "serverSubpath": "bin/mariadbd.exe",
+        "cliSubpath": "bin/mariadb.exe"
+      },
+      {
+        "version": "10.11.11 (LTS)",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mariadb-10.11.11.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mysql-cli-windows-x64.zip",
+        "serverSubpath": "bin/mariadbd.exe",
+        "cliSubpath": "bin/mariadb.exe"
+      }
+    ],
+    "mssql": [
+      {
+        "version": "2025 (Preview)",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mssql-2025.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlcmd-windows-x64.zip",
+        "serverSubpath": "bin/sqlservr.exe",
+        "cliSubpath": "sqlcmd.exe"
+      },
+      {
+        "version": "2022",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mssql-2022.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlcmd-windows-x64.zip",
+        "serverSubpath": "bin/sqlservr.exe",
+        "cliSubpath": "sqlcmd.exe"
+      },
+      {
+        "version": "2019",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mssql-2019.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlcmd-windows-x64.zip",
+        "serverSubpath": "bin/sqlservr.exe",
+        "cliSubpath": "sqlcmd.exe"
+      },
+      {
+        "version": "2017",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mssql-2017.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlcmd-windows-x64.zip",
+        "serverSubpath": "bin/sqlservr.exe",
+        "cliSubpath": "sqlcmd.exe"
+      },
+      {
+        "version": "2014",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/mssql-2014.zip",
+        "cliUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlcmd-windows-x64.zip",
+        "serverSubpath": "bin/sqlservr.exe",
+        "cliSubpath": "sqlcmd.exe"
       }
     ],
     "sqlite": [
       {
         "version": "3.46.1",
-        "downloadUrl": "https://www.sqlite.org/2024/sqlite-tools-win-x64-3460100.zip",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.46.1.zip",
         "serverSubpath": "bin/sqlite3.exe",
         "cliSubpath": "bin/sqlite3.exe"
+      }
+    ],
+    "pocketbase": [
+      {
+        "version": "0.25.9",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.25.9.zip",
+        "serverSubpath": "bin/pocketbase.exe",
+        "cliSubpath": "bin/pocketbase.exe"
       },
       {
-        "version": "3.45.3",
-        "downloadUrl": "https://www.sqlite.org/2024/sqlite-tools-win-x64-3450300.zip",
-        "serverSubpath": "bin/sqlite3.exe",
-        "cliSubpath": "bin/sqlite3.exe"
+        "version": "0.24.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.24.4.zip",
+        "serverSubpath": "bin/pocketbase.exe",
+        "cliSubpath": "bin/pocketbase.exe"
+      }
+    ],
+    "meilisearch": [
+      {
+        "version": "1.13.3",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.13.3.zip",
+        "serverSubpath": "bin/meilisearch.exe",
+        "cliSubpath": "bin/meilisearch.exe"
       },
       {
-        "version": "3.44.2 (Legacy)",
-        "downloadUrl": "https://www.sqlite.org/2023/sqlite-tools-win-x64-3440200.zip",
-        "serverSubpath": "bin/sqlite3.exe",
-        "cliSubpath": "bin/sqlite3.exe"
+        "version": "1.12.5",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.12.5.zip",
+        "serverSubpath": "bin/meilisearch.exe",
+        "cliSubpath": "bin/meilisearch.exe"
+      }
+    ],
+    "duckdb": [
+      {
+        "version": "1.2.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.2.0.zip",
+        "serverSubpath": "bin/duckdb.exe",
+        "cliSubpath": "bin/duckdb.exe"
+      },
+      {
+        "version": "1.1.3",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.1.3.zip",
+        "serverSubpath": "bin/duckdb.exe",
+        "cliSubpath": "bin/duckdb.exe"
+      }
+    ],
+    "surrealdb": [
+      {
+        "version": "2.2.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-2.2.1.zip",
+        "serverSubpath": "bin/surreal.exe",
+        "cliSubpath": "bin/surreal.exe"
+      },
+      {
+        "version": "2.1.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-2.1.4.zip",
+        "serverSubpath": "bin/surreal.exe",
+        "cliSubpath": "bin/surreal.exe"
       }
     ]
   }
