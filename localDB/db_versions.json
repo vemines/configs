@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.0.1",
-  "lastUpdated": "2026-09-03T12:00:00Z",
+  "schemaVersion": "1.1.0",
+  "lastUpdated": "2026-09-05T12:42:34.406Z",
   "engines": {
     "mongodb": [
       {
@@ -431,6 +431,169 @@
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-1.5.4.zip",
         "serverSubpath": "bin/surreal.exe",
         "cliSubpath": "bin/surreal.exe"
+      }
+    ],
+    "qdrant": [
+      {
+        "version": "1.15.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/qdrant-1.15.1.zip",
+        "serverSubpath": "bin/qdrant.exe"
+      },
+      {
+        "version": "1.14.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/qdrant-1.14.1.zip",
+        "serverSubpath": "bin/qdrant.exe"
+      },
+      {
+        "version": "1.13.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/qdrant-1.13.4.zip",
+        "serverSubpath": "bin/qdrant.exe"
+      },
+      {
+        "version": "1.12.5",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/qdrant-1.12.5.zip",
+        "serverSubpath": "bin/qdrant.exe"
+      }
+    ],
+    "victoriametrics": [
+      {
+        "version": "1.151.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/victoriametrics-1.151.0.zip",
+        "serverSubpath": "bin/victoria-metrics.exe"
+      },
+      {
+        "version": "1.150.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/victoriametrics-1.150.0.zip",
+        "serverSubpath": "bin/victoria-metrics.exe"
+      },
+      {
+        "version": "1.149.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/victoriametrics-1.149.0.zip",
+        "serverSubpath": "bin/victoria-metrics.exe"
+      },
+      {
+        "version": "1.148.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/victoriametrics-1.148.0.zip",
+        "serverSubpath": "bin/victoria-metrics.exe"
+      }
+    ],
+    "etcd": [
+      {
+        "version": "3.6.14",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/etcd-3.6.14.zip",
+        "serverSubpath": "bin/etcd.exe",
+        "cliSubpath": "bin/etcdctl.exe"
+      },
+      {
+        "version": "3.5.33",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/etcd-3.5.33.zip",
+        "serverSubpath": "bin/etcd.exe",
+        "cliSubpath": "bin/etcdctl.exe"
+      },
+      {
+        "version": "3.5.18",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/etcd-3.5.18.zip",
+        "serverSubpath": "bin/etcd.exe",
+        "cliSubpath": "bin/etcdctl.exe"
+      },
+      {
+        "version": "3.5.17",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/etcd-3.5.17.zip",
+        "serverSubpath": "bin/etcd.exe",
+        "cliSubpath": "bin/etcdctl.exe"
+      }
+    ],
+    "cockroachdb": [
+      {
+        "version": "24.3.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/cockroachdb-24.3.4.zip",
+        "serverSubpath": "bin/cockroach.exe",
+        "cliSubpath": "bin/cockroach.exe"
+      },
+      {
+        "version": "23.2.14",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/cockroachdb-23.2.14.zip",
+        "serverSubpath": "bin/cockroach.exe",
+        "cliSubpath": "bin/cockroach.exe"
+      }
+    ],
+    "influxdb": [
+      {
+        "version": "2.7.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/influxdb-2.7.1.zip",
+        "serverSubpath": "bin/influxd.exe",
+        "cliSubpath": "bin/influx.exe"
+      },
+      {
+        "version": "2.7.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/influxdb-2.7.0.zip",
+        "serverSubpath": "bin/influxd.exe",
+        "cliSubpath": "bin/influx.exe"
+      },
+      {
+        "version": "1.8.10",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/influxdb-1.8.10.zip",
+        "serverSubpath": "bin/influxd.exe",
+        "cliSubpath": "bin/influx.exe"
+      }
+    ],
+    "firebird": [
+      {
+        "version": "5.0.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/firebird-5.0.4.zip",
+        "serverSubpath": "bin/firebird.exe",
+        "cliSubpath": "bin/isql.exe"
+      },
+      {
+        "version": "4.0.7",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/firebird-4.0.7.zip",
+        "serverSubpath": "bin/firebird.exe",
+        "cliSubpath": "bin/isql.exe"
+      },
+      {
+        "version": "3.0.14",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/firebird-3.0.14.zip",
+        "serverSubpath": "bin/firebird.exe",
+        "cliSubpath": "bin/isql.exe"
+      }
+    ],
+    "arangodb": [
+      {
+        "version": "3.11.11",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/arangodb-3.11.11.zip",
+        "serverSubpath": "bin/arangod.exe",
+        "cliSubpath": "bin/arangosh.exe"
+      },
+      {
+        "version": "3.11.10",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/arangodb-3.11.10.zip",
+        "serverSubpath": "bin/arangod.exe",
+        "cliSubpath": "bin/arangosh.exe"
+      },
+      {
+        "version": "3.10.13",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/arangodb-3.10.13.zip",
+        "serverSubpath": "bin/arangod.exe",
+        "cliSubpath": "bin/arangosh.exe"
+      }
+    ],
+    "ravendb": [
+      {
+        "version": "7.2.6",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/ravendb-7.2.6.zip",
+        "serverSubpath": "bin/Raven.Server.exe"
+      },
+      {
+        "version": "6.2.2",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/ravendb-6.2.2.zip",
+        "serverSubpath": "bin/Raven.Server.exe"
+      }
+    ],
+    "couchdb": [
+      {
+        "version": "3.3.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/couchdb-3.3.0.zip",
+        "serverSubpath": "bin/couchdb.cmd"
       }
     ]
   }
