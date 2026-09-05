@@ -170,8 +170,32 @@
     ],
     "sqlite": [
       {
+        "version": "3.53.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.53.1.zip",
+        "serverSubpath": "bin/sqlite3.exe",
+        "cliSubpath": "bin/sqlite3.exe"
+      },
+      {
+        "version": "3.49.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.49.1.zip",
+        "serverSubpath": "bin/sqlite3.exe",
+        "cliSubpath": "bin/sqlite3.exe"
+      },
+      {
         "version": "3.46.1",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.46.1.zip",
+        "serverSubpath": "bin/sqlite3.exe",
+        "cliSubpath": "bin/sqlite3.exe"
+      },
+      {
+        "version": "3.45.3",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.45.3.zip",
+        "serverSubpath": "bin/sqlite3.exe",
+        "cliSubpath": "bin/sqlite3.exe"
+      },
+      {
+        "version": "3.44.2",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/sqlite-3.44.2.zip",
         "serverSubpath": "bin/sqlite3.exe",
         "cliSubpath": "bin/sqlite3.exe"
       }
