@@ -178,6 +178,12 @@
     ],
     "pocketbase": [
       {
+        "version": "0.39.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.39.4.zip",
+        "serverSubpath": "bin/pocketbase.exe",
+        "cliSubpath": "bin/pocketbase.exe"
+      },
+      {
         "version": "0.25.9",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.25.9.zip",
         "serverSubpath": "bin/pocketbase.exe",
@@ -188,9 +194,27 @@
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.24.4.zip",
         "serverSubpath": "bin/pocketbase.exe",
         "cliSubpath": "bin/pocketbase.exe"
+      },
+      {
+        "version": "0.22.22",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.22.22.zip",
+        "serverSubpath": "bin/pocketbase.exe",
+        "cliSubpath": "bin/pocketbase.exe"
+      },
+      {
+        "version": "0.20.7",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/pocketbase-0.20.7.zip",
+        "serverSubpath": "bin/pocketbase.exe",
+        "cliSubpath": "bin/pocketbase.exe"
       }
     ],
     "meilisearch": [
+      {
+        "version": "1.35.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.35.0.zip",
+        "serverSubpath": "bin/meilisearch.exe",
+        "cliSubpath": "bin/meilisearch.exe"
+      },
       {
         "version": "1.13.3",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.13.3.zip",
@@ -202,9 +226,33 @@
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.12.5.zip",
         "serverSubpath": "bin/meilisearch.exe",
         "cliSubpath": "bin/meilisearch.exe"
+      },
+      {
+        "version": "1.11.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.11.0.zip",
+        "serverSubpath": "bin/meilisearch.exe",
+        "cliSubpath": "bin/meilisearch.exe"
+      },
+      {
+        "version": "1.10.3",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/meilisearch-1.10.3.zip",
+        "serverSubpath": "bin/meilisearch.exe",
+        "cliSubpath": "bin/meilisearch.exe"
       }
     ],
     "duckdb": [
+      {
+        "version": "1.5.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.5.4.zip",
+        "serverSubpath": "bin/duckdb.exe",
+        "cliSubpath": "bin/duckdb.exe"
+      },
+      {
+        "version": "1.4.4 (LTS)",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.4.4.zip",
+        "serverSubpath": "bin/duckdb.exe",
+        "cliSubpath": "bin/duckdb.exe"
+      },
       {
         "version": "1.2.0",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.2.0.zip",
@@ -216,9 +264,27 @@
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.1.3.zip",
         "serverSubpath": "bin/duckdb.exe",
         "cliSubpath": "bin/duckdb.exe"
+      },
+      {
+        "version": "1.0.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/duckdb-1.0.0.zip",
+        "serverSubpath": "bin/duckdb.exe",
+        "cliSubpath": "bin/duckdb.exe"
       }
     ],
     "surrealdb": [
+      {
+        "version": "3.2.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-3.2.1.zip",
+        "serverSubpath": "bin/surreal.exe",
+        "cliSubpath": "bin/surreal.exe"
+      },
+      {
+        "version": "2.6.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-2.6.0.zip",
+        "serverSubpath": "bin/surreal.exe",
+        "cliSubpath": "bin/surreal.exe"
+      },
       {
         "version": "2.2.1",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-2.2.1.zip",
@@ -228,6 +294,12 @@
       {
         "version": "2.1.4",
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-2.1.4.zip",
+        "serverSubpath": "bin/surreal.exe",
+        "cliSubpath": "bin/surreal.exe"
+      },
+      {
+        "version": "1.5.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/surrealdb-1.5.4.zip",
         "serverSubpath": "bin/surreal.exe",
         "cliSubpath": "bin/surreal.exe"
       }
