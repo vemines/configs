@@ -21,7 +21,7 @@ const EXCLUDED_DIRS = new Set([
 // Comprehensive whitelist of allowed public web & configuration file extensions
 const ALLOWED_EXTENSIONS = new Set([
   // Data & Config
-  '.json', '.json5', '.txt', '.csv', '.tsv', '.xml', '.yaml', '.yml', '.toml', '.ini',
+  '.json', '.json5', '.txt', '.csv', '.tsv', '.xml', '.yaml', '.yml', '.toml', '.ini', '.md', '.mdx',
   // Images
   '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.avif', '.bmp', '.tiff',
   // Media & Video

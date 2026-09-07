@@ -595,6 +595,187 @@
         "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/couchdb-3.3.0.zip",
         "serverSubpath": "bin/couchdb.cmd"
       }
+    ],
+    "memcached": [
+      {
+        "version": "1.6.8 (jefyt)",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/memcached-1.6.8.zip",
+        "serverSubpath": "bin/memcached.exe",
+        "cliSubpath": "bin/memcached.exe"
+      }
+    ],
+    "elasticsearch": [
+      {
+        "version": "8.17.2",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/elasticsearch-8.17.2.zip",
+        "serverSubpath": "bin/elasticsearch.bat",
+        "cliSubpath": "bin/elasticsearch.bat"
+      },
+      {
+        "version": "8.11.4",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/elasticsearch-8.11.4.zip",
+        "serverSubpath": "bin/elasticsearch.bat",
+        "cliSubpath": "bin/elasticsearch.bat"
+      },
+      {
+        "version": "7.17.26",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/elasticsearch-7.17.26.zip",
+        "serverSubpath": "bin/elasticsearch.bat",
+        "cliSubpath": "bin/elasticsearch.bat"
+      }
+    ],
+    "neo4j": [
+      {
+        "version": "5.26.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/neo4j-5.26.0.zip",
+        "serverSubpath": "bin/neo4j.bat",
+        "cliSubpath": "bin/cypher-shell.bat"
+      },
+      {
+        "version": "5.20.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/neo4j-5.20.0.zip",
+        "serverSubpath": "bin/neo4j.bat",
+        "cliSubpath": "bin/cypher-shell.bat"
+      }
+    ],
+    "garnet": [
+      {
+        "version": "1.0.46",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/garnet-1.0.46.zip",
+        "serverSubpath": "bin/GarnetServer.exe",
+        "cliSubpath": "bin/redis-cli.exe"
+      },
+      {
+        "version": "1.0.35",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/garnet-1.0.35.zip",
+        "serverSubpath": "bin/GarnetServer.exe",
+        "cliSubpath": "bin/redis-cli.exe"
+      },
+      {
+        "version": "1.0.22",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/garnet-1.0.22.zip",
+        "serverSubpath": "bin/GarnetServer.exe",
+        "cliSubpath": "bin/redis-cli.exe"
+      },
+      {
+        "version": "1.0.5",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/garnet-1.0.5.zip",
+        "serverSubpath": "bin/GarnetServer.exe",
+        "cliSubpath": "bin/redis-cli.exe"
+      },
+      {
+        "version": "1.0.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/garnet-1.0.0.zip",
+        "serverSubpath": "bin/GarnetServer.exe",
+        "cliSubpath": "bin/redis-cli.exe"
+      }
+    ],
+    "minio": [
+      {
+        "version": "2025.02.07",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/minio-2025.02.07.zip",
+        "serverSubpath": "bin/minio.exe"
+      },
+      {
+        "version": "2024.11.07",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/minio-2024.11.07.zip",
+        "serverSubpath": "bin/minio.exe"
+      },
+      {
+        "version": "2024.06.13",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/minio-2024.06.13.zip",
+        "serverSubpath": "bin/minio.exe"
+      },
+      {
+        "version": "2023.12.23",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/minio-2023.12.23.zip",
+        "serverSubpath": "bin/minio.exe"
+      }
+    ],
+    "nats": [
+      {
+        "version": "2.11.17",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/nats-2.11.17.zip",
+        "serverSubpath": "bin/nats-server.exe"
+      },
+      {
+        "version": "2.10.26",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/nats-2.10.26.zip",
+        "serverSubpath": "bin/nats-server.exe"
+      },
+      {
+        "version": "2.10.18",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/nats-2.10.18.zip",
+        "serverSubpath": "bin/nats-server.exe"
+      },
+      {
+        "version": "2.9.25",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/nats-2.9.25.zip",
+        "serverSubpath": "bin/nats-server.exe"
+      }
+    ],
+    "ferretdb": [
+      {
+        "version": "1.24.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/ferretdb-1.24.0.zip",
+        "serverSubpath": "bin/ferretdb.exe",
+        "cliSubpath": "bin/mongosh.exe"
+      },
+      {
+        "version": "1.21.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/ferretdb-1.21.0.zip",
+        "serverSubpath": "bin/ferretdb.exe",
+        "cliSubpath": "bin/mongosh.exe"
+      }
+    ],
+    "seaweedfs": [
+      {
+        "version": "3.82",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/seaweedfs-3.82.zip",
+        "serverSubpath": "bin/weed.exe"
+      },
+      {
+        "version": "3.75",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/seaweedfs-3.75.zip",
+        "serverSubpath": "bin/weed.exe"
+      },
+      {
+        "version": "3.60",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/seaweedfs-3.60.zip",
+        "serverSubpath": "bin/weed.exe"
+      },
+      {
+        "version": "3.51",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/seaweedfs-3.51.zip",
+        "serverSubpath": "bin/weed.exe"
+      },
+      {
+        "version": "3.45",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/seaweedfs-3.45.zip",
+        "serverSubpath": "bin/weed.exe"
+      }
+    ],
+    "immudb": [
+      {
+        "version": "1.9.7",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/immudb-1.9.7.zip",
+        "serverSubpath": "bin/immudb.exe"
+      },
+      {
+        "version": "1.9.6",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/immudb-1.9.6.zip",
+        "serverSubpath": "bin/immudb.exe"
+      },
+      {
+        "version": "1.5.0",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/immudb-1.5.0.zip",
+        "serverSubpath": "bin/immudb.exe"
+      },
+      {
+        "version": "1.4.1",
+        "downloadUrl": "https://github.com/vemines/localDB-binaries/releases/download/binaries/immudb-1.4.1.zip",
+        "serverSubpath": "bin/immudb.exe"
+      }
     ]
   }
 }
