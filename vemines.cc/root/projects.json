@@ -13,5 +13,10 @@
     "title": "OCR",
     "description": "Trích xuất văn bản từ ảnh chụp màn hình. Hỗ trợ hoạt động ngoại tuyến và tích hợp API.",
     "link": "https://github.com/vemines/ocr/releases"
+  },
+  {
+    "title": "LocalDB",
+    "description": "Công Cụ Quản Lý Cơ Sở Dữ Liệu Tiện lợi, Gọn Nhẹ Cho Windows",
+    "link": "https://github.com/vemines/LocalDB/releases"
   }
 ]
