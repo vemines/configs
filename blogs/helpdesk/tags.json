@@ -14,5 +14,13 @@
   {
     "id": 4,
     "name": "Quét vân tay"
+  },
+  {
+    "id": 5,
+    "name": "iCPV"
+  },
+  {
+    "id": 6,
+    "name": "KPI"
   }
 ]
