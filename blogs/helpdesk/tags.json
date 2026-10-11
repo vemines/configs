@@ -22,5 +22,13 @@
   {
     "id": 6,
     "name": "KPI"
+  },
+  {
+    "id": 7,
+    "name": "Phần mềm"
+  },
+  {
+    "id": 8,
+    "name": "Công cụ"
   }
 ]
