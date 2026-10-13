@@ -1,12 +1,1 @@
-[
-  {
-    "id": 1,
-    "title": "Hướng dẫn chia sẻ máy in qua mạng LAN trên Windows 10 và 11",
-    "summary": "Quy trình thiết lập chia sẻ máy in qua Computer Name",
-    "datetime": "2026-09-08 20:33:00",
-    "tags": [
-      1,
-      2
-    ]
-  }
-]
+[{"id":1,"title":"Hướng dẫn chia sẻ máy in qua mạng LAN trên Windows 10 và 11","summary":"Quy trình thiết lập chia sẻ máy in qua Computer Name","datetime":"2026-09-08 20:33:00","tags":[1,2]},{"id":2,"title":"Hướng dẫn sử dụng Quick Type: Phần mềm gõ tắt văn bản trên Windows","summary":"Công cụ gõ tắt dành cho dân văn phòng và người thường xuyên nhập liệu lặp lại.","datetime":"2026-09-24 08:30:00","tags":[3,4]}]
